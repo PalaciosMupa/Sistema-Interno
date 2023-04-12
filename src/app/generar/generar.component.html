@@ -1,0 +1,56 @@
+<mat-sidenav-container>
+<mat-sidenav-content>
+<main class="col-md-9 col-lg-12 px-md-4">
+      <div class="col-xl-12 col-lg-8 item-wr">
+    <div class="col-xl-12 col-lg-8">
+      <form >
+        <div class="card shadow mb-4">
+
+           <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h3 class="m-0 font-weight-bold text-primary"><span><H3> Generar Cotización</H3> </span></h3>
+
+            </div>
+    
+             <div class="card-body">
+
+            <div class="row row-cols-1 row-cols-md-2">              
+
+              <div class="form-group row">
+
+           <mat-form-field appearance="fill">
+              <mat-label>Seleccione una Empresa</mat-label>
+              <mat-select [(ngModel)]="cotizacion.empresa" name="cotizacion"
+              >
+              <mat-option *ngFor="let empresa of empresas" [value]="empresa">
+              {{empresa.nombre}}
+              </mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+
+             <div class="form-group row">
+
+           <mat-form-field appearance="fill">
+              <mat-label>Seleccione el Cliente</mat-label>
+              <mat-select [(ngModel)]="cotizacion.cliente" name="cliente"
+              >
+              <mat-option *ngFor="let clie of cliente" [value]="clie">
+              {{clie.nombre}}
+              </mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+          </div>  <!-- Terminan los dos primeros select -->
+
+      </div>
+      </div>
+        </form>
+	</div>
+
+    </div>
+
+  </main>
+
+</mat-sidenav-content>
+</mat-sidenav-container>		

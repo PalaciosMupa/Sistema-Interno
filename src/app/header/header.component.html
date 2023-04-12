@@ -1,0 +1,244 @@
+<!--
+  
+<mat-toolbar>
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened">
+      menu
+    </mat-icon>
+    <mat-icon *ngIf="sidenav.opened">
+      close
+    </mat-icon>
+
+  </button>
+
+ <a
+    [routerLink]="'/'"
+    mat-icon-button
+    class="example-icon"
+    arial-label="Example icon-button with menu icon"
+  >
+    
+  </a>
+
+    <span>Sistema Interno B A N G R A</span>
+  <span class="example-spacer"></span>
+
+  
+
+  
+  </mat-toolbar>    -->
+
+<!--
+<mat-sidenav-container>
+
+  
+<mat-sidenav #sidenav="matSidenav">
+
+  
+  <mat-divider> </mat-divider>
+  <button mat-button class="menu-button" type="button" >
+    <mat-icon style="color: white;">home</mat-icon>  
+    <span style="color: white;">Inicio</span>
+  </button>
+
+  <button mat-button class="menu-button"type="button" >
+   <mat-icon style="color: white;">face</mat-icon> 
+    <span style="color: white;">Clientes</span>
+  </button>
+
+  <button  mat-button class="menu-button"type="button" >
+    <mat-icon style="color: white;">folder_open</mat-icon> 
+    <span style="color: white;">Formatos</span>
+  </button>
+
+
+  <mat-divider> </mat-divider>
+
+  <button mat-button class="menu-button"type="button" >
+    <mat-icon style="color: white;">money</mat-icon>  
+    <span style="color: white;">Inventario</span>
+  </button>
+
+  
+      <button mat-button class="menu-button"type="button" >
+      <mat-icon style="color: white;">autorenew</mat-icon>
+      <span style="color: white;">Repuestos</span>
+    </button>
+
+  <button mat-button class="menu-button" type="button" >
+    <mat-icon style="color: white;">school</mat-icon> 
+    <span style="color: white;">Instructivo</span>
+  </button>
+
+ 
+   <button  mat-button class="menu-button"type="button" >
+   <mat-icon>how_to_vote</mat-icon> 
+    <span> Tickets</span>
+  </button>
+
+   
+
+
+
+
+  <mat-divider> </mat-divider>
+
+
+  <button mat-button class="menu-button"type="button" >
+   <mat-icon>settings</mat-icon> 
+    <span> Catálogos</span>
+  </button>
+
+   <button mat-button class="menu-button"type="button" >
+   <mat-icon>how_to_reg</mat-icon> 
+    <span> Registro</span>
+  </button>
+
+  <button mat-button class="menu-button"type="button" >
+   <mat-icon>account_box</mat-icon> 
+    <span>Roles</span>
+  </button>
+
+
+</mat-sidenav>  -->
+
+<!--
+<mat-sidenav-container class="app-container">
+    <mat-sidenav #sidenav mode="side" [class.mat-elevation-z4]="true" class="app-sidenav">
+        <mat-nav-list>
+            <mat-list-item routerLink="#">
+                <mat-icon>dashboard</mat-icon><span>Dashboard</span>
+            </mat-list-item>
+            <mat-expansion-panel  [class.mat-elevation-z0]="true">
+                <mat-expansion-panel-header>
+                    Mobile Phone
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="#">
+                        <mat-icon>apple</mat-icon><span>iOS</span>
+                    </a>
+                    <a mat-list-item routerLink="#">
+                        <mat-icon>android</mat-icon><span>Android</span>
+                    </a>
+                </mat-nav-list>
+            </mat-expansion-panel>
+            <mat-expansion-panel [class.mat-elevation-z0]="true">
+                <mat-expansion-panel-header>
+                    Frameworks
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="#">Spring</a>
+                    <a mat-list-item routerLink="#">Hibernate</a>
+                    <a mat-list-item routerLink="#">Struts</a>
+                </mat-nav-list>
+            </mat-expansion-panel>
+        </mat-nav-list>
+    </mat-sidenav>
+
+<mat-sidenav-content>
+
+    <main class="col-md-9 col-lg-12 px-md-4">
+    <div class="row">
+ 
+
+       </div>
+     </main>
+
+      </mat-sidenav-content>   
+    </mat-sidenav-container>   -->
+
+
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand sm-6" href="index.html">Sistema Interno BANGRA</a>
+            <!-- Sidebar Toggle-->
+            &nbsp; &nbsp;
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Buscar..." aria-label="Buscar..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li ><a class="dropdown-item">Login</a></li>
+                        <li  class="dropdown-item">
+                        <a class="dropdown-item" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Ver Perfil
+                        </a>
+                        <li class="dropdown-item">
+                        <a class="dropdown-item"  role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Salir de sistema
+                        </a>
+                      </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+    <div id="layoutSidenav" >
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Página principal</div>
+                            <a class="nav-link" routerLink="/inicio">
+                              <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                             Dashboard
+                            </a>
+                           
+                            <div >
+                            
+                            <div class="sb-sidenav-menu-heading">Menús</div>
+
+                            <div *ngFor="let menu of menu_obj"> <!--Menus-->
+                              <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" [attr.data-bs-target]="'#'+ menu.nombre"  aria-expanded="false" attr.aria-controls='{{menu.nombre}}'>
+                                  <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                  {{ menu.nombre }}
+                                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                              </a>
+                              <div *ngFor="let submenu of submenu_obj">    <!--Submenus-->
+                                  <div  *ngIf="submenu.objetopadre == menu.id"  class="collapse" id='{{menu.nombre}}' aria-labelledby="headingTwo" [attr.data-bs-parent]="'#' + 'submenu.id'" >
+                                      <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                          <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" [attr.data-bs-target]="'#' + submenu.nombre"  aria-expanded="false" attr.aria-controls="{{submenu.nombre}}">
+                                              {{ submenu.nombre }}
+                                              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                          </a>
+                                          <div *ngFor="let trn of trn_obj"> <!--Transacciones-->
+                                          <div *ngIf="trn.objetopadre == submenu.id" class="collapse" id="{{submenu.nombre}}" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                              <nav class="sb-sidenav-menu-nested nav">
+                                                  <a class="nav-link" routerLink="/{{trn.nombreinterno}}">{{trn.nombre}}</a>
+                                              </nav>
+                                          </div>
+                                          </div>
+                                      </nav>
+                                  </div>
+                              </div>
+                              <div *ngFor="let trn of trn_obj"> <!--Transacciones-->
+                              <div *ngIf="trn.objetopadre == menu.id" class="collapse" id="{{menu.nombre}}" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                  <nav class="sb-sidenav-menu-nested nav">
+                                      <a class="nav-link" routerLink="/{{trn.nombreinterno}}">{{trn.nombre}}</a>
+                                  </nav>
+                              </div>
+                              </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logeado como:</div>
+                        
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main class="container py-2" >
+                <router-outlet></router-outlet>
+                </main>
+            </div>
+        </div>
