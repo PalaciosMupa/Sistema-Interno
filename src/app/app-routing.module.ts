@@ -4,13 +4,16 @@ import { HeaderComponent } from './header/header.component';
 import { GenerarComponent } from './generar/generar.component';
 import { VerComponent } from './ver/ver.component';
 import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent },
+  {path: '', component: LoginComponent },
 {path: 'header', component: HeaderComponent },
 {path: 'generar', component: GenerarComponent },
 {path: 'ver', component: VerComponent },
+{path: 'dash', component: DashboardComponent },
+//{ path: '', redirectTo: 'header', pathMatch: 'full' }
 
   ];
 

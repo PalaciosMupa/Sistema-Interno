@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CotizacionModel } from '../../models/cotizacion.model';
 import { EmpresaModel } from '../../models/empresa.model';
+import { ModalService } from './producto/modal.service';
 
 @Component({
   selector: 'app-generar',
@@ -13,6 +14,9 @@ export class GenerarComponent {
   empresas: any[] = [];
   cliente: any[] = []; 
   public cotizacion: CotizacionModel = new CotizacionModel();
+  CotizacionSeleccionada: CotizacionModel;
+
+  constructor( private modalService: ModalService) { }
 
 
   ngOnInit(): void {
@@ -32,6 +36,11 @@ export class GenerarComponent {
   
 
     
+  }
+
+   abrirModal(cotizaciones: CotizacionModel) {
+    this.CotizacionSeleccionada = cotizaciones;
+    this.modalService.abrirModal();
   }
 
 }

@@ -13,6 +13,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class LoginComponent {
 
   usuario: UsuarioModel;
+  autenticado:boolean = false;
 
   loginForm = this.fb.group({
     email: ['', [Validators.required]],
@@ -28,13 +29,54 @@ export class LoginComponent {
     this.usuario = new UsuarioModel();
   }
 
+  ngOnInit(): void {
+
+  if (this.authService.isAuthenticated()) {
+      this.autenticado = true;
+    }
+  }
+
   loginReactivo() {
+   console.log("Datos",this.loginForm.value);
+   console.log("Datos 1",this.loginForm.value.email);
+
+      if (this.loginForm.value.email.trim() == '' || this.loginForm.value.email.trim() == null) {
+      this.snack.open('El nombre de usuario es requerido !!', 'Aceptar', {
+        duration: 3000
+      })
+      return;
+    }
+
+    if (this.loginForm.value.password.trim() == '' || this.loginForm.value.password.trim() == null) {
+      this.snack.open('La contraseña es requerida !!', 'Aceptar', {
+        duration: 3000
+      })
+      return;
+    }
+
+
     if (this.loginForm.valid) {
       this.authService.loginReactivo(this.loginForm.value)
         .subscribe((res) => {
+
+      this.authService.guardarUsuario(res.data);
+      this.authService.guardarToken(res.data);
+          this.router.navigate(['/dash']);
           console.log(res);
+        }, err => {
+      if (err.status == 400) {
+
+        this.snack.open('Usuario o clave incorrectas!!!', 'Aceptar', {
+          duration: 4000
         })
+      }
     }
+
+
+    );
+    }
+
+    
   }
 
 

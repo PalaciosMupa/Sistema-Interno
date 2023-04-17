@@ -94,7 +94,7 @@ export class LoginService {
 
   isAuthenticated(): boolean {
     let payload = this.obtenerDatosToken(this.token);
-    if (payload != null && payload.user_name && payload.user_name.length > 0) {
+    if (payload != null && payload.email && payload.email.length > 0) {
       return true;
     }
     return false;
@@ -109,10 +109,10 @@ export class LoginService {
 
   logout(): void {
     this._token = null;
-    this._usuario = null;
+   // this._usuario = null;
     sessionStorage.clear();
     sessionStorage.removeItem('token');
-    sessionStorage.removeItem('usuario');
+   // sessionStorage.removeItem('usuario');
   }
 
 

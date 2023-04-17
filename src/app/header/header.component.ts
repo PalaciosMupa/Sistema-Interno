@@ -2,6 +2,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {MatSidenav} from '@angular/material/sidenav';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -21,16 +22,22 @@ export class HeaderComponent {
   menu_json:string[] = [];
   nuevo: any[] = [];
 
+  autenticado:boolean = false;
+
 
   
 
-   constructor(private observer: BreakpointObserver)
+   constructor(private observer: BreakpointObserver, private authService: LoginService,)
          { }
 
 
    
 
     ngOnInit(): void {
+
+      if (this.authService.isAuthenticated()) {
+      this.autenticado = true;
+    }
 
     /*  this.menu = [{'id':1, 'nombre':'Generar_Cotización', 'tipo':'M', 'nombreinterno':'','objetopadre':0},
         {'id':4, 'nombre':'Clientes', 'tipo':'S', 'nombreinterno':'','objetopadre':1},
@@ -87,6 +94,12 @@ export class HeaderComponent {
 
  
     
+  }
+
+   logout(): void {
+    //let username = this.authService.usuario.username;
+    this.authService.logout();
+   
   }
 
   onSelect(data: any): void {

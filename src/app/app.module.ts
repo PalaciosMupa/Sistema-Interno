@@ -22,6 +22,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProductoComponent } from './generar/producto/producto.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { MatSelectModule } from '@angular/material/select';
     HeaderComponent,
     VerComponent,
     GenerarComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent,
+    ProductoComponent
   ],
   imports: [
     BrowserModule,

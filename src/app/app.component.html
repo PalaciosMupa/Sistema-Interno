@@ -487,7 +487,44 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!--   <router-outlet></router-outlet> -->
-<app-login></app-login>
+ <!-- <router-outlet></router-outlet> -->
+ 
+ <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand sm-6" href="index.html">Sistema Interno BANGRA</a>
+            <!-- Sidebar Toggle-->
+            &nbsp; &nbsp;
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+             
 
- <!-- <app-header></app-header> -->  
+                <button type="button" class="btn btn-danger"  *ngIf="autenticado" (click)="logout()">Salir</button>
+                </div>
+            </form>
+            <!-- Navbar-->
+          
+        </nav>
+
+        <div id="layoutSidenav" >  
+          <div id="layoutSidenav_nav">
+
+
+
+ <app-header *ngIf="autenticado"></app-header>   
+
+  </div>
+
+          <div  id="layoutSidenav_content">
+                <main class="container py-2" >
+                <router-outlet ></router-outlet>
+                </main>
+            </div>
+
+             
+               </div>
+
+            <!--    <app-login *ngIf="!autenticado" ></app-login> -->
+
+           
