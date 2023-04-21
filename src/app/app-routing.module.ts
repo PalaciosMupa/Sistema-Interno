@@ -5,6 +5,7 @@ import { GenerarComponent } from './generar/generar.component';
 import { VerComponent } from './ver/ver.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProductosComponent } from './productos/productos.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
 {path: 'generar', component: GenerarComponent },
 {path: 'ver', component: VerComponent },
 {path: 'dash', component: DashboardComponent },
+{path: 'producto', component: ProductosComponent },
 //{ path: '', redirectTo: 'header', pathMatch: 'full' }
 
   ];

@@ -1,0 +1,65 @@
+<app-agregar  *ngIf="ProductoSeleccionado" [producto]="ProductoSeleccionado">  </app-agregar>
+
+<main class="col-md-9 col-lg-12 px-md-4">
+
+
+  <div class="col-xl-12 col-lg-8 item-wr">
+
+  <div class="card border-primary mb-3">
+    <div class="card-header">Registro de Productos</div>
+    <div class="card-body text-primary">
+      <h3 class="card-title">Productos</h3>
+      <div class="my-2 text-left button-wrapper">
+        <button class="btn btn-rounded btn-primary btn-space" type="button" (click)="abrirModal(producto)">
+          Agregar un Producto
+        </button>
+
+      </div>
+  
+
+      <table class="table table-bordered table-striped table-sm table-responsive">
+        <thead>
+
+          
+          <tr>
+            <th>Nombre</th>
+            <th>Presentación</th>
+            <th>Descripción</th>
+           
+            <th>Editar</th>
+            <th>Eliminar</th> 
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let produc of productos"  >
+
+          <td>{{ produc.name }}</td>
+            <td>{{ produc.presentation }}</td>
+            <td>{{ produc.description }}</td>
+           
+             
+            
+
+            <td>
+              <button type="button" name="editar"   class="btn btn-primary btn-sm">Editar</button>
+            </td>
+           <td>
+              <button type="button" name="eliminar"  class="btn btn-danger btn-sm">Eliminar</button>
+            </td>  
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  </div>
+
+
+
+
+</main>
+
+
+
+
+

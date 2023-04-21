@@ -70,7 +70,7 @@ export class HeaderComponent {
                    {'id':10, 'nombre':'Entregar', 'tipo':'T', 'nombreinterno':'/ver','objetopadre':4},
                    {'id':11, 'nombre':'Entregar', 'tipo':'T', 'nombreinterno':'/ver','objetopadre':9},
                    {'id':12, 'nombre':'Clientes', 'tipo':'T', 'nombreinterno':'/generar','objetopadre':6},
-                   {'id':13, 'nombre':'Productos', 'tipo':'T', 'nombreinterno':'/ver','objetopadre':6},
+                   {'id':13, 'nombre':'Productos', 'tipo':'T', 'nombreinterno':'/producto','objetopadre':6},
                    {'id':14, 'nombre':'Usuarios', 'tipo':'T', 'nombreinterno':'/generar','objetopadre':5},
                    {'id':15, 'nombre':'Roles', 'tipo':'T', 'nombreinterno':'/ver','objetopadre':5},   
         ]

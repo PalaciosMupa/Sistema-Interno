@@ -24,6 +24,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductoComponent } from './generar/producto/producto.component';
+import { ProductosComponent } from './productos/productos.component';
+import { AgregarComponent } from './productos/agregar/agregar.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ProductoComponent } from './generar/producto/producto.component';
     GenerarComponent,
     LoginComponent,
     DashboardComponent,
-    ProductoComponent
+    ProductoComponent,
+    ProductosComponent,
+    AgregarComponent
   ],
   imports: [
     BrowserModule,

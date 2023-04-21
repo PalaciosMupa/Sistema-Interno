@@ -1,0 +1,86 @@
+
+<div class="abrir-modal animacion fadeIn" *ngIf="agregarService.modal">
+<div class="modal" tabindex="-1" role="dialog" style="display:block;">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<br>
+
+        <h2 class="modal-title">{{ titulo }}</h2>
+        <button (click)="cerrarModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<form [formGroup]="productoForm" (ngSubmit)="guardar()" class="example-form">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-8">
+           
+			
+				<mat-form-field class="example-full-width">
+					<mat-label>Nombre del Producto</mat-label>
+					<input formControlName="name" matInput placeholder="" value="">
+					</mat-form-field>
+
+					
+			
+             
+
+               
+                </div>
+
+             
+              </div>
+
+              <div class="row">
+              	<div class="col-xs-12 col-sm-6 col-md-8">
+              		
+					 <mat-form-field class="example-full-width">
+		    <mat-label>Descripción del Producto</mat-label>
+		    <textarea formControlName="description" matInput placeholder="Ejm. Producto hecho de madera...."></textarea>
+		  </mat-form-field>
+		  
+
+                 </div>
+               </div>
+
+                 
+                  	
+                  		 
+              	
+              		
+              	 <mat-form-field appearance="fill">
+              <mat-label>Presentación</mat-label>
+              <mat-select name="presenta"  formControlName="presentation"  
+              >
+              <mat-option *ngFor="let presenta of presentacion" [value]="presenta.nombre">
+              {{presenta.nombre}}
+              </mat-option>
+              </mat-select>
+            </mat-form-field>
+           
+
+                 
+             
+
+            
+         <br>  <!-- Aqui termina el primer modal body -->
+
+          <br>
+
+ <button type="submit"  class="btn btn-info btn-fill pull-right btn-space" >Registrar</button>
+             
+        
+           </div>
+           </form>
+        
+      <div class="modal-footer">
+        <button (click)="cerrarModal()" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
