@@ -14,22 +14,24 @@ export class ProductosComponent {
   public producto: ProductoModel = new ProductoModel();
   productos: any[];
 
-  constructor( private agregarService: AgregarService, private serviciosService: ServiciosService,) { }
+  constructor(private agregarService: AgregarService, private serviciosService: ServiciosService,) { }
 
 
-ngOnInit(): void {
- 
-/*
- this.serviciosService.getProductos().subscribe(
+  ngOnInit(): void {
+
+
+    this.serviciosService.getProductos().subscribe(
       resp => {
 
-        this.productos = resp;
+        console.log(resp.data);
 
-    });  */
+        this.productos = resp.data;
 
-}
+      });
 
-   abrirModal(producto: ProductoModel) {
+  }
+
+  abrirModal(producto: ProductoModel) {
     this.ProductoSeleccionado = producto;
     this.agregarService.abrirModal();
   }
