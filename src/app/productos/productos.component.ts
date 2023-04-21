@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AgregarService } from './agregar/agregar.service';
 import { ServiciosService } from '../services/servicios.service';
 import { ProductoModel } from '../../models/producto.model';
+import { AppResponse } from 'src/models/api-response.model';
 
 @Component({
   selector: 'app-productos',
@@ -21,7 +22,7 @@ export class ProductosComponent {
 
 
     this.serviciosService.getProductos().subscribe(
-      resp => {
+      (resp: AppResponse<ProductoModel[]>) => {
 
         console.log(resp.data);
 

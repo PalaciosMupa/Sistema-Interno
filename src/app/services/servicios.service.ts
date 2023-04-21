@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpEvent, HttpRequest } from '@angular/common
 import { Observable, throwError } from 'rxjs';
 import { LoginService } from '../services/login.service';
 import { ProductoModel } from '../../models/producto.model';
+import { AppResponse } from 'src/models/api-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,7 @@ export class ServiciosService {
   }
 
 
-  getProductos(): Observable<any> {
+  getProductos(): Observable<AppResponse<ProductoModel[]>> {
 
     let httpHeaders = new HttpHeaders();
     let token = this.authService.token;
@@ -46,7 +47,7 @@ export class ServiciosService {
     // }
 
     httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
-    return this.http.get<any>(
+    return this.http.get<AppResponse<ProductoModel[]>>(
       `https://sistema-interno-back-pepemalpik.vercel.app/products`, { headers: httpHeaders },
     );
 
