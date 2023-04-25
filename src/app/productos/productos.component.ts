@@ -30,6 +30,10 @@ export class ProductosComponent {
 
       });
 
+    
+
+   
+
   }
 
   abrirModal(producto: ProductoModel) {

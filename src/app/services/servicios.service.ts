@@ -4,6 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { LoginService } from '../services/login.service';
 import { ProductoModel } from '../../models/producto.model';
 import { AppResponse } from 'src/models/api-response.model';
+import { map, catchError} from 'rxjs/operators';
+import swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -51,10 +53,28 @@ export class ServiciosService {
       `https://sistema-interno-back-pepemalpik.vercel.app/products`, { headers: httpHeaders },
     );
 
-
-
-
   }
+
+  /*    updateProducto(producto: ProductoModel): Observable<any> {
+
+    let httpHeaders = new HttpHeaders();
+    let token = this.authService.token;
+    const urlEndpoint = 'https://sistema-interno-back-pepemalpik.vercel.app/products';   
+
+    httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+  return this.http.patch<any>(`${urlEndpoint}/${producto.id}`, producto, { headers: httpHeaders }).pipe(
+    catchError(e => {
+
+      if (e.status == 400) {
+        return throwError(e);
+      }
+
+      console.error(e.error.mensaje);
+      swal.fire(e.error.mensaje, e.error.error, 'error');
+      return throwError(e);
+    })
+  );
+}    */
 
 
 

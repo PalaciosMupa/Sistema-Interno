@@ -20,6 +20,7 @@ export class AgregarComponent {
       
 
     productoForm = this.fb.group({
+
     name: ['', [Validators.required]],
     presentation: ['', [Validators.required]],
     description: ['', [Validators.required]],
@@ -42,6 +43,12 @@ export class AgregarComponent {
                    {'id':7, 'nombre':'Litro'},
                    {'id':8, 'nombre':'Kilo'}
                    ]    
+
+     if(this.productoForm.value.name != "" || this.productoForm.value.name != null){
+
+      this.productoForm.setValue({name: this.producto.name, presentation: this.producto.presentation, description: this.producto.description});
+     }
+
 
   
   }
@@ -71,10 +78,27 @@ export class AgregarComponent {
     
   }
 
+   /*   updateProducto(): void {
+  
+  this.serviciosService.updateProducto(this.productoForm.value)
+    .subscribe(
+      json => {
+        
+        swal.fire('El Producto fue Actualizado', 'El producto se Actualizó con éxito', 'success');
+      },
+      err => {
+        this.errores = err.error.errors as string[];
+        console.error('Código del error desde el backend: ' + err.status);
+        console.error(err.error.errors);
+      }
+    )
+  }   */
+
  
 
       cerrarModal() {
     this.agregarService.cerrarModal();
+    window.location.reload();
     
   }
 

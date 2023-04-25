@@ -1,5 +1,5 @@
 export class ProductoModel{
-  id: number;
+ // id: any;
   name: string;
   presentation: string;
   description: string;
