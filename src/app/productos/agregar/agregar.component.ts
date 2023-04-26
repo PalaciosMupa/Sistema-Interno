@@ -20,7 +20,7 @@ export class AgregarComponent {
       
 
     productoForm = this.fb.group({
-
+    
     name: ['', [Validators.required]],
     presentation: ['', [Validators.required]],
     description: ['', [Validators.required]],
@@ -78,9 +78,9 @@ export class AgregarComponent {
     
   }
 
-   /*   updateProducto(): void {
+      updateProducto(): void {
   
-  this.serviciosService.updateProducto(this.productoForm.value)
+  this.serviciosService.updateProducto(this.producto)
     .subscribe(
       json => {
         
@@ -92,7 +92,7 @@ export class AgregarComponent {
         console.error(err.error.errors);
       }
     )
-  }   */
+  }   
 
  
 

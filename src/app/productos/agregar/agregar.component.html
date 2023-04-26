@@ -12,7 +12,7 @@
         </button>
       </div>
       <div class="modal-body">
-      	<form [formGroup]="productoForm" (ngSubmit)="guardar()" class="example-form">
+      	<form [formGroup]="productoForm" class="example-form">
         <div class="container">
           <div class="row">
 
@@ -70,13 +70,13 @@
 
           <br>
 
-             <button type="submit"  class="btn btn-info btn-fill pull-right btn-space"  *ngIf="!producto.name else elseBlock" >Registrar</button>
+            <button  (click)='guardar()' class="btn btn-info btn-fill pull-right btn-space"   >Registrar</button>  
 
                
 
-           <ng-template #elseBlock>
-            <button class="btn btn-primary" role="button" >Editar</button>
-          </ng-template>
+          
+            <button (click)='updateProducto()' class="btn btn-primary" role="button" >Editar</button>
+          
              
         
            </div>

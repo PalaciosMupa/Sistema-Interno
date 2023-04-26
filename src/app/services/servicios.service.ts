@@ -55,14 +55,14 @@ export class ServiciosService {
 
   }
 
-  /*    updateProducto(producto: ProductoModel): Observable<any> {
+      updateProducto(producto: ProductoModel): Observable<any> {
 
     let httpHeaders = new HttpHeaders();
     let token = this.authService.token;
     const urlEndpoint = 'https://sistema-interno-back-pepemalpik.vercel.app/products';   
 
     httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
-  return this.http.patch<any>(`${urlEndpoint}/${producto.id}`, producto, { headers: httpHeaders }).pipe(
+  return this.http.patch<any>(`${urlEndpoint}/${producto._id}`, producto, { headers: httpHeaders }).pipe(
     catchError(e => {
 
       if (e.status == 400) {
@@ -74,7 +74,7 @@ export class ServiciosService {
       return throwError(e);
     })
   );
-}    */
+}    
 
 
 
