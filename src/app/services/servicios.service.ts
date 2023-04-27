@@ -77,6 +77,22 @@ export class ServiciosService {
 }    
 
 
+deleteProducto(producto: ProductoModel): Observable<AppResponse<ProductoModel>>  {
+  let httpHeaders = new HttpHeaders();
+    let token = this.authService.token;
+    const urlEndpoint = 'https://sistema-interno-back-pepemalpik.vercel.app/products';   
+
+    httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+  return this.http.delete<AppResponse<ProductoModel>>(`${urlEndpoint}/${producto._id}`, { headers: httpHeaders  }).pipe(
+    catchError(e => {
+      console.error(e.error.mensaje);
+      swal.fire(e.error.mensaje, e.error.error, 'error');
+      return throwError(e);
+    })
+  );
+}  
+
+
 
 
 }
