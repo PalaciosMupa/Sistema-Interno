@@ -1,0 +1,68 @@
+<app-clie *ngIf="ClienteSeleccionado"  [cliente]="ClienteSeleccionado"> ></app-clie>
+
+<main class="col-md-9 col-lg-12 px-md-4">
+
+
+  <div class="col-xl-12 col-lg-8 item-wr">
+
+  <div class="card border-primary mb-3">
+    <div class="card-header">Registro de Clientes</div>
+    <div class="card-body text-primary">
+      <h3 class="card-title">Clientes</h3>
+      <div class="my-2 text-left button-wrapper">
+        <button class="btn btn-rounded btn-primary btn-space" type="button" (click)="abrirModal(cliente)">
+         Registrar un Cliente
+        </button>
+
+      </div>
+  
+
+      <table class="table table-bordered table-striped table-sm table-responsive">
+        <thead>
+
+          
+          <tr>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+           <th>Contacto</th>
+            <th>Editar</th>
+            <th>Eliminar</th> 
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let cli of clientes"  >
+
+          <td>{{ cli.name }}</td>
+            <td>{{ cli.address }}</td>
+            <td>{{ cli.phone }}</td>
+           <td>{{ cli.email }}</td>
+            <td>{{ cli.contact }}</td>
+             
+            
+
+            <td>
+              <button type="button" name="editar"  (click)="abrirModal(cli)"   class="btn btn-primary btn-sm">Editar</button>
+            </td>
+           <td>
+              <button type="button" name="eliminar" (click)="delete(cli)" class="btn btn-danger btn-sm">Eliminar</button>
+            </td>  
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  </div>
+
+
+
+
+</main>
+
+
+
+
+
+

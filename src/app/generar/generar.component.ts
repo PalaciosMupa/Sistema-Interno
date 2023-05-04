@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CotizacionModel } from '../../models/cotizacion.model';
 import { EmpresaModel } from '../../models/empresa.model';
+import { ClienteModel } from '../../models/cliente.model';
 import { ModalService } from './producto/modal.service';
+import { ServiciosService } from '../services/servicios.service';
+import { AppResponse } from 'src/models/api-response.model';
 
 @Component({
   selector: 'app-generar',
@@ -12,16 +15,23 @@ export class GenerarComponent {
 
  // cotizacion: CotizacionModel[];
   empresas: any[] = [];
-  cliente: any[] = []; 
+  cliente: any[] = [];
+  clientes: any[]; 
   public cotizacion: CotizacionModel = new CotizacionModel();
   CotizacionSeleccionada: CotizacionModel;
 
-  constructor( private modalService: ModalService) { }
+  constructor( private modalService: ModalService, private serviciosService: ServiciosService) { }
 
 
   ngOnInit(): void {
 
-    
+       this.serviciosService.getClientes().subscribe(
+      (resp: AppResponse<ClienteModel[]>) => {
+
+       
+        this.clientes = resp.data;
+
+      });    
 
       this.empresas = [{'id':1, 'nombre':'Bangra'},
                    {'id':2, 'nombre':'Gesit'},    

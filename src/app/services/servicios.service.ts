@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpEvent, HttpRequest } from '@angular/common
 import { Observable, throwError } from 'rxjs';
 import { LoginService } from '../services/login.service';
 import { ProductoModel } from '../../models/producto.model';
+import { ClienteModel } from '../../models/cliente.model';
 import { AppResponse } from 'src/models/api-response.model';
 import { map, catchError} from 'rxjs/operators';
 import swal from 'sweetalert2';
@@ -37,6 +38,23 @@ export class ServiciosService {
 
   }
 
+  guardarCliente(body: any) {
+
+    let httpHeaders = new HttpHeaders();
+    let token = this.authService.token;
+    if (token != null) {
+      httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+    }
+
+    const urlEndpoint = 'https://sistema-interno-back-pepemalpik.vercel.app/customers';
+    //  const httpHeaders = new HttpHeaders({
+    //   'Content-Type': 'application/json',
+    // 'Authorization': 'Basic ' + credenciales
+    // });
+    return this.http.post<any>(urlEndpoint, body, { headers: httpHeaders });
+
+  }
+
 
   getProductos(): Observable<AppResponse<ProductoModel[]>> {
 
@@ -51,6 +69,23 @@ export class ServiciosService {
     httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
     return this.http.get<AppResponse<ProductoModel[]>>(
       `https://sistema-interno-back-pepemalpik.vercel.app/products`, { headers: httpHeaders },
+    );
+
+  }
+
+    getClientes(): Observable<AppResponse<ClienteModel[]>> {
+
+    let httpHeaders = new HttpHeaders();
+    let token = this.authService.token;
+    // if (token != null) {
+    //   httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+    //   const urlEndpoint = 'https://sistema-interno-back-pepemalpik.vercel.app/products';
+    //   return this.http.get<ProductoModel[]>(urlEndpoint, { headers: httpHeaders });
+    // }
+
+    httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+    return this.http.get<AppResponse<ClienteModel[]>>(
+      `https://sistema-interno-back-pepemalpik.vercel.app/customers`, { headers: httpHeaders },
     );
 
   }
@@ -77,6 +112,28 @@ export class ServiciosService {
 }    
 
 
+ updateCliente(body: any, cliente: ClienteModel): Observable<any> {
+
+    let httpHeaders = new HttpHeaders();
+    let token = this.authService.token;
+    const urlEndpoint = 'https://sistema-interno-back-pepemalpik.vercel.app/customers';   
+
+    httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+  return this.http.patch<any>(`${urlEndpoint}/${cliente._id}`, body, { headers: httpHeaders }).pipe(
+    catchError(e => {
+
+      if (e.status == 400) {
+        return throwError(e);
+      }
+
+      console.error(e.error.mensaje);
+      swal.fire(e.error.mensaje, e.error.error, 'error');
+      return throwError(e);
+    })
+  );
+}   
+
+
 deleteProducto(producto: ProductoModel): Observable<AppResponse<ProductoModel>>  {
   let httpHeaders = new HttpHeaders();
     let token = this.authService.token;
@@ -92,6 +149,21 @@ deleteProducto(producto: ProductoModel): Observable<AppResponse<ProductoModel>> 
   );
 }  
 
+
+deleteCliente(cliente: ClienteModel): Observable<AppResponse<ClienteModel>>  {
+  let httpHeaders = new HttpHeaders();
+    let token = this.authService.token;
+    const urlEndpoint = 'https://sistema-interno-back-pepemalpik.vercel.app/customers';   
+
+    httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+  return this.http.delete<AppResponse<ClienteModel>>(`${urlEndpoint}/${cliente._id}`, { headers: httpHeaders  }).pipe(
+    catchError(e => {
+      console.error(e.error.mensaje);
+      swal.fire(e.error.mensaje, e.error.error, 'error');
+      return throwError(e);
+    })
+  );
+}  
 
 
 

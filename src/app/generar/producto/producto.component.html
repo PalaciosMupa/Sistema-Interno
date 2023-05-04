@@ -10,17 +10,92 @@
         </button>
       </div>
       <div class="modal-body">
+        <form [formGroup]="cotizacionForm" class="example-form">
         <div class="container">
           <div class="row">
 
             <div class="col-sm">
            
+         <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Producto</mat-label>
+            <input type="text"
+                   placeholder="Nombre del Producto"
+                   aria-label="Number"
+                   matInput
+                   formControlName="empresa"
+                  
+                  (ngModelChange)="onChangeObj($event)"
+                   [formControl]="myControl"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
 
              
 
                
                 </div>
               </div>
+
+
+                <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-8">
+           
+      
+        <mat-form-field class="example-full-width">
+          <mat-label>Precio del Producto</mat-label>
+          <input formControlName="precio" matInput placeholder="" value="">
+          </mat-form-field>
+
+          
+      
+             
+
+               
+                </div>
+
+             
+              </div>
+
+                 <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-8">
+           
+      
+        <mat-form-field class="example-full-width">
+          <mat-label>Cantidad</mat-label>
+          <input formControlName="cantidad" matInput placeholder="" value="">
+          </mat-form-field>
+
+          
+               
+                </div>
+
+             
+              </div>
+
+               <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-8">
+           
+      
+        <mat-form-field class="example-full-width">
+          <mat-label>Número de Solicitud</mat-label>
+          <input formControlName="solicitud" matInput placeholder="" value="">
+          </mat-form-field>
+
+          
+               
+                </div>
+
+             
+              </div>
+
 
 
             </div>
@@ -32,7 +107,7 @@
 
 
              
-        
+        </form>
            </div>
         
       <div class="modal-footer">

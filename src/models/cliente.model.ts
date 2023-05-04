@@ -1,6 +1,10 @@
 export class ClienteModel{
-  id: number;
-  nombre: string;
-  
+  _id: string;
+  name: string;
+  phone: string;
+  email: string;
+  address: string;
+  contact: string;
+
   
 }

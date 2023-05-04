@@ -22,10 +22,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule} from '@angular/material/autocomplete';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductoComponent } from './generar/producto/producto.component';
 import { ProductosComponent } from './productos/productos.component';
 import { AgregarComponent } from './productos/agregar/agregar.component';
+import { ClientesComponent } from './clientes/clientes.component';
+import { ClieComponent } from './clientes/clie/clie.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import { AgregarComponent } from './productos/agregar/agregar.component';
     DashboardComponent,
     ProductoComponent,
     ProductosComponent,
-    AgregarComponent
+    AgregarComponent,
+    ClientesComponent,
+    ClieComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +57,7 @@ import { AgregarComponent } from './productos/agregar/agregar.component';
     MatCardModule,
     MatListModule,
     MatExpansionModule,
+    MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,

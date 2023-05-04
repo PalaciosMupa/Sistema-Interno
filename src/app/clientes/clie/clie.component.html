@@ -1,0 +1,126 @@
+
+<div class="abrir-modal animacion fadeIn" *ngIf="clienteService.modal">
+<div class="modal" tabindex="-1" role="dialog" style="display:block;">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<br>
+
+        <h2 class="modal-title">{{ titulo }}</h2>
+        <button (click)="cerrarModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<form [formGroup]="clienteForm" class="example-form">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-8">
+           
+			
+				<mat-form-field class="example-full-width">
+					<mat-label>Nombre del Cliente</mat-label>
+					<input formControlName="name" matInput placeholder="" value="">
+					</mat-form-field>
+
+               
+                </div>
+
+             
+              </div>
+
+               <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-8">
+           
+			
+				<mat-form-field class="example-full-width">
+					<mat-label>Teléfono</mat-label>
+					<input formControlName="phone" matInput placeholder="" value="">
+					</mat-form-field>
+
+               
+                </div>
+
+             
+              </div>
+
+               <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-8">
+           
+			
+				<mat-form-field class="example-full-width">
+					<mat-label>Email</mat-label>
+					<input formControlName="email" matInput placeholder="" value="">
+					</mat-form-field>
+
+               
+                </div>
+
+             
+              </div>
+
+               <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-8">
+           
+			
+				<mat-form-field class="example-full-width">
+					<mat-label>Direción</mat-label>
+					  <textarea formControlName="address" matInput placeholder="Ejm. Calle 27 norte No. 234..."></textarea>
+					</mat-form-field>
+
+               
+                </div>
+
+             
+              </div>
+
+               <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-8">
+           
+			
+				<mat-form-field class="example-full-width">
+					<mat-label>Contacto</mat-label>
+					<input formControlName="contact" matInput placeholder="" value="">
+					</mat-form-field>
+
+               
+                </div>
+
+             
+              </div>
+
+           
+              
+
+            
+         <br>  <!-- Aqui termina el primer modal body -->
+
+          <br>
+
+            <button  (click)='guardarCliente()' class="btn btn-info btn-fill pull-right btn-space"  *ngIf="!cliente._id else elseBlock" >Registrar</button>  
+
+               
+       <ng-template #elseBlock>
+            <button  (click)='updateCliente()' class="btn btn-primary" role="button" >Editar</button>
+          </ng-template>
+          
+            
+          
+             
+        
+           </div>
+           </form>
+        
+      <div class="modal-footer">
+        <button (click)="cerrarModal()" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+

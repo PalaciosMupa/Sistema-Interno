@@ -37,8 +37,8 @@
               <mat-label>Seleccione el Cliente</mat-label>
               <mat-select [(ngModel)]="cotizacion.cliente" name="cliente"
               >
-              <mat-option *ngFor="let clie of cliente" [value]="clie">
-              {{clie.nombre}}
+              <mat-option *ngFor="let clie of clientes" [value]="clie">
+              {{clie.name}}
               </mat-option>
               </mat-select>
             </mat-form-field>
