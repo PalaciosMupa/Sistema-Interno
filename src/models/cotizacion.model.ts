@@ -3,18 +3,22 @@ import { ClienteModel } from './cliente.model';
 import { ProductoModel } from './producto.model';
 
 export class CotizacionModel{
-  id: number;
-  Cotizacion: number;
-  solicitud: number;
-  fecha: string;
+  _id: number;
+  noQuote: number;
+  noRequest: string;
+  date: string;
   hora: string;
-  precio: number;
-  cantidad: number;
-  serie:string;
-  expiracion:string;
+  time: number;
+  quantity: number;
+  price: string;
+  total: number;
+  subtotal: number;
+  iva: number;
+ // serie:string;
+ // expiracion:string;
 
-  empresa: EmpresaModel;
-  cliente: ClienteModel;
-  producto: ProductoModel;
+  company: EmpresaModel;
+  customer: ClienteModel;
+  product: ProductoModel;
 
 }

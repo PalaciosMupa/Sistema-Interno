@@ -1,11 +1,11 @@
-<app-producto *ngIf="CotizacionSeleccionada" [cotizaciones]="CotizacionSeleccionada"></app-producto>
+<app-producto *ngIf="CotizacionSeleccionada" [cotizacion]="CotizacionSeleccionada"></app-producto>
 
 <mat-sidenav-container>
 <mat-sidenav-content>
 <main class="col-md-9 col-lg-12 px-md-4">
       <div class="col-xl-12 col-lg-8 item-wr">
     <div class="col-xl-12 col-lg-8">
-      <form >
+      <form [formGroup]="">
         <div class="card shadow mb-4">
 
            <div
@@ -16,34 +16,10 @@
     
              <div class="card-body">
 
-            <div class="row row-cols-1 row-cols-md-2">              
+            
+            
 
-              <div class="form-group row">
-
-           <mat-form-field appearance="fill">
-              <mat-label>Seleccione una Empresa</mat-label>
-              <mat-select [(ngModel)]="cotizacion.empresa" name="cotizacion"
-              >
-              <mat-option *ngFor="let empresa of empresas" [value]="empresa">
-              {{empresa.nombre}}
-              </mat-option>
-              </mat-select>
-            </mat-form-field>
-            </div>
-
-             <div class="form-group row">
-
-           <mat-form-field appearance="fill">
-              <mat-label>Seleccione el Cliente</mat-label>
-              <mat-select [(ngModel)]="cotizacion.cliente" name="cliente"
-              >
-              <mat-option *ngFor="let clie of clientes" [value]="clie">
-              {{clie.name}}
-              </mat-option>
-              </mat-select>
-            </mat-form-field>
-            </div>
-          </div>  <!-- Terminan los dos primeros select -->
+            
 
           <button type="button" (click)="abrirModal(cotizacion)" class="btn btn-primary">Agregar Producto</button>
 
@@ -54,6 +30,57 @@
 
     </div>
 
+
+     <table class="table table-bordered table-hover table-striped table-sm table-responsive">
+        <thead>
+
+          
+          <tr>
+            <th>Artículo</th>
+            <th>Unidad</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Subtotal</th>
+            <th>IVA</th>
+            <th>Total</th>
+           
+             <th>Editar</th> 
+            <th>Eliminar</th> 
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let cotiza of cotizacione" >
+
+            <td>{{ cotiza.product.name }}</td>
+            <td>{{ cotiza.product.presentation }}</td>
+            <td>{{ cotiza.quantity }}</td>
+            <td>$ {{ cotiza.price }}</td>
+            <td>$ {{ cotiza.subtotal }}</td>
+            <td>$ {{ cotiza.iva }}</td>
+            <td>$ {{ cotiza.total }}</td>
+           
+             
+             <td>
+              <button type="button" name="editar"   (click)="abrirModal(cotiza)" class="btn btn-primary btn-sm">Editar</button>
+            </td>
+
+           
+           <td>
+              <button type="button" name="eliminar"  (click)="delete(cotiza)"  class="btn btn-danger btn-sm">Eliminar</button>
+            </td>  
+          </tr>
+           <tr>  
+            <td colspan= "3" ></td>  
+            <td colspan= "1" ><b>Totales:</b> </td>  
+            <td colspan= "1" ><b></b> $ {{suma1}}</td> 
+            <td colspan= "1" ><b></b>$ {{suma2}} </td> 
+            <td colspan= "1" ><b></b>$ {{suma3}} </td>  
+          </tr>  
+        </tbody>
+      </table>
+
+
+ <button (click)='eliminarCocki()' type="button" name="eliminar"   class="btn btn-success btn-sm">Generar Cotización</button> 
   </main>
 
 </mat-sidenav-content>

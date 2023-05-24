@@ -4,6 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { LoginService } from '../services/login.service';
 import { ProductoModel } from '../../models/producto.model';
 import { ClienteModel } from '../../models/cliente.model';
+import { EmpresaModel } from '../../models/empresa.model';
+import { CotizacionModel } from '../../models/cotizacion.model';
 import { AppResponse } from 'src/models/api-response.model';
 import { map, catchError} from 'rxjs/operators';
 import swal from 'sweetalert2';
@@ -55,6 +57,23 @@ export class ServiciosService {
 
   }
 
+    guardarCotizacion(body: any) {
+
+    let httpHeaders = new HttpHeaders();
+    let token = this.authService.token;
+    if (token != null) {
+      httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+    }
+
+    const urlEndpoint = 'https://sistema-interno-back-pepemalpik.vercel.app/quotes';
+    //  const httpHeaders = new HttpHeaders({
+    //   'Content-Type': 'application/json',
+    // 'Authorization': 'Basic ' + credenciales
+    // });
+    return this.http.post<any>(urlEndpoint, body, { headers: httpHeaders });
+
+  }
+
 
   getProductos(): Observable<AppResponse<ProductoModel[]>> {
 
@@ -90,6 +109,40 @@ export class ServiciosService {
 
   }
 
+   getEmpresas(): Observable<AppResponse<EmpresaModel[]>> {
+
+    let httpHeaders = new HttpHeaders();
+    let token = this.authService.token;
+    // if (token != null) {
+    //   httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+    //   const urlEndpoint = 'https://sistema-interno-back-pepemalpik.vercel.app/products';
+    //   return this.http.get<ProductoModel[]>(urlEndpoint, { headers: httpHeaders });
+    // }
+
+    httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+    return this.http.get<AppResponse<EmpresaModel[]>>(
+      `https://sistema-interno-back-pepemalpik.vercel.app/companies`, { headers: httpHeaders },
+    );
+
+  }
+
+    getCotizaciones(): Observable<AppResponse<CotizacionModel[]>> {
+
+    let httpHeaders = new HttpHeaders();
+    let token = this.authService.token;
+    // if (token != null) {
+    //   httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+    //   const urlEndpoint = 'https://sistema-interno-back-pepemalpik.vercel.app/products';
+    //   return this.http.get<ProductoModel[]>(urlEndpoint, { headers: httpHeaders });
+    // }
+
+    httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+    return this.http.get<AppResponse<CotizacionModel[]>>(
+      `https://sistema-interno-back-pepemalpik.vercel.app/quotes`, { headers: httpHeaders },
+    );
+
+  }
+
       updateProducto(body: any, producto: ProductoModel): Observable<any> {
 
     let httpHeaders = new HttpHeaders();
@@ -109,7 +162,28 @@ export class ServiciosService {
       return throwError(e);
     })
   );
-}    
+}
+
+   updateCotizacion(body: any, cotizacion: CotizacionModel): Observable<any> {
+
+    let httpHeaders = new HttpHeaders();
+    let token = this.authService.token;
+    const urlEndpoint = 'https://sistema-interno-back-pepemalpik.vercel.app/quotes';   
+
+    httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+  return this.http.patch<any>(`${urlEndpoint}/${cotizacion._id}`, body, { headers: httpHeaders }).pipe(
+    catchError(e => {
+
+      if (e.status == 400) {
+        return throwError(e);
+      }
+
+      console.error(e.error.mensaje);
+      swal.fire(e.error.mensaje, e.error.error, 'error');
+      return throwError(e);
+    })
+  );
+}     
 
 
  updateCliente(body: any, cliente: ClienteModel): Observable<any> {
@@ -148,6 +222,22 @@ deleteProducto(producto: ProductoModel): Observable<AppResponse<ProductoModel>> 
     })
   );
 }  
+
+deleteCotizacion(cotizacion: CotizacionModel): Observable<AppResponse<CotizacionModel>>  {
+  let httpHeaders = new HttpHeaders();
+    let token = this.authService.token;
+    const urlEndpoint = 'https://sistema-interno-back-pepemalpik.vercel.app/quotes';   
+
+    httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+  return this.http.delete<AppResponse<CotizacionModel>>(`${urlEndpoint}/${cotizacion._id}`, { headers: httpHeaders  }).pipe(
+    catchError(e => {
+      console.error(e.error.mensaje);
+      swal.fire(e.error.mensaje, e.error.error, 'error');
+      return throwError(e);
+    })
+  );
+}  
+
 
 
 deleteCliente(cliente: ClienteModel): Observable<AppResponse<ClienteModel>>  {

@@ -12,17 +12,81 @@
       <div class="modal-body">
         <form [formGroup]="cotizacionForm" class="example-form">
         <div class="container">
+
+        
+      <div class="row row-cols-1 row-cols-md-2">
+       
+
+            <div class="col mb-6">
+           
+  
+       
+           <mat-form-field class="example-full-width">
+              <mat-label>Empresa</mat-label>
+              <mat-select formControlName="company"  name="cotizacion"
+              >
+              <mat-option *ngFor="let empresa of empresas" [value]="empresa._id">
+              {{empresa.name}}
+              </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+             
+
+               
+                </div>
+             
+
+
+              
+
+            <div class="col mb-6">
+           
+  
+       
+           <mat-form-field class="example-full-width">
+              <mat-label>Cliente</mat-label>
+              <mat-select formControlName="customer"  name="cotizacion"
+              >
+              <mat-option *ngFor="let clie of clientes" [value]="clie._id">
+              {{clie.name}}
+              </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+             
+
+               
+                </div>
+              </div>
+
+             
+
+            
+  
+       
+         <mat-form-field class="example-full-width">
+          <mat-label>Número de Solicitud</mat-label>
+          <input formControlName="noRequest"  matInput placeholder="" value="">
+          </mat-form-field>
+
+             
+
+               
+            
+
+
           <div class="row">
 
             <div class="col-sm">
            
-         <mat-form-field class="example-full-width" appearance="fill">
+       <!--  <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Producto</mat-label>
             <input type="text"
                    placeholder="Nombre del Producto"
                    aria-label="Number"
                    matInput
-                   formControlName="empresa"
+                   formControlName="product"
                   
                   (ngModelChange)="onChangeObj($event)"
                    [formControl]="myControl"
@@ -32,8 +96,18 @@
                 {{option}}
               </mat-option>
             </mat-autocomplete>
-          </mat-form-field>
+          </mat-form-field>   -->
 
+
+             <mat-form-field class="example-full-width">
+              <mat-label>Producto</mat-label>
+              <mat-select name="presenta"  formControlName="product"  
+              >
+              <mat-option *ngFor="let presenta of productos" [value]="presenta._id">
+              {{presenta.name}}
+              </mat-option>
+              </mat-select>
+            </mat-form-field>
 
              
 
@@ -49,7 +123,7 @@
       
         <mat-form-field class="example-full-width">
           <mat-label>Precio del Producto</mat-label>
-          <input formControlName="precio" matInput placeholder="" value="">
+          <input formControlName="price" matInput placeholder="" value="">
           </mat-form-field>
 
           
@@ -69,7 +143,7 @@
       
         <mat-form-field class="example-full-width">
           <mat-label>Cantidad</mat-label>
-          <input formControlName="cantidad" matInput placeholder="" value="">
+          <input formControlName="quantity" matInput placeholder="" value="">
           </mat-form-field>
 
           
@@ -79,22 +153,7 @@
              
               </div>
 
-               <div class="row">
-
-            <div class="col-xs-12 col-sm-6 col-md-8">
-           
-      
-        <mat-form-field class="example-full-width">
-          <mat-label>Número de Solicitud</mat-label>
-          <input formControlName="solicitud" matInput placeholder="" value="">
-          </mat-form-field>
-
           
-               
-                </div>
-
-             
-              </div>
 
 
 
@@ -105,8 +164,17 @@
 
           <br>
 
+        
 
-             
+                <button  (click)='guardarCotizacion()' class="btn btn-info btn-fill pull-right btn-space"  *ngIf="!cotizacion._id else elseBlock" >Registrar</button>  
+
+               
+       <ng-template #elseBlock>
+            <button (click)='updateCotizacion()' class="btn btn-primary" role="button" >Editar</button>
+          </ng-template>
+          
+
+
         </form>
            </div>
         

@@ -34,6 +34,8 @@ export class AgregarComponent {
 
      // this.presentacion = ['Caja','Pieza','Paquete','Bolsa','Rollo','Galon','Litro','Kilo'  ];
 
+      
+
      this.presentacion = [{'id':1, 'nombre':'Caja'},
                    {'id':2, 'nombre':'Pieza'},    
                    {'id':3, 'nombre':'Paquete'},  

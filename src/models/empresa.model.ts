@@ -1,6 +1,6 @@
 export class EmpresaModel{
-  id: number;
-  nombre: string;
+  _id: number;
+  name: string;
   logo: string;
   
 }
