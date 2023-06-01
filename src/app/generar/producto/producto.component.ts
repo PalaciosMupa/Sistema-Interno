@@ -33,6 +33,7 @@ export class ProductoComponent {
   produc:  ProductoModel[];
   productos: ProductoModel[];
   cotizaciones: CotizacionModel[];
+ 
   prodName: any[] = [];
   empresas: any[] = [];
   clientes: any[];
@@ -47,6 +48,8 @@ export class ProductoComponent {
   solici: string;
   cliente1: string;
   compania1: string;
+
+
 
   subtotal: string;
   subtota: number;
@@ -78,6 +81,8 @@ export class ProductoComponent {
 
   ngOnInit(): void {
 
+
+    console.log("Datos desde", this.cotizacion);
 
 
      this.serviciosService.getClientes().subscribe(
@@ -133,15 +138,18 @@ export class ProductoComponent {
       this.solici = sessionStorage.getItem('solicitud');
       this.cliente1 = sessionStorage.getItem('cliente');
       this.compania1 = sessionStorage.getItem('compania');
-      if (this.solici != "" || this.solici != null) {
 
-        
+      
+     
+      if (this.solici != "" || this.solici != null) {
 
          this.cotizacionForm.setValue({noQuote: this.cotizacionForm.value.noQuote, noRequest: this.solici,  total: this.cotizacionForm.value.total,
           subtotal: this.cotizacionForm.value.subtotal, iva: this.cotizacionForm.value.iva, company: this.compania1, customer: this.cliente1, 
-          date: this.cotizacionForm.value.date, time: this.cotizacionForm.value.time, product: this.cotizacionForm.value.product, price: this.cotizacionForm.value.price, quantity: this.cotizacionForm.value.quantity });
+          date: this.cotizacionForm.value.date, time: this.cotizacionForm.value.time, product: this.cotizacionForm.value.product, price: this.cotizacionForm.value.price, quantity: this.cotizacionForm.value.quantity});
         
       }
+
+
       
 
 
@@ -274,6 +282,106 @@ export class ProductoComponent {
   }
 
     updateCotizacion(): void {
+
+      
+
+      this.cotizacionForm.value.date = this.cotizacion.date;
+      this.cotizacionForm.value.noQuote =  this.cotizacion.noQuote.toString();
+    //  this.cotizacionForm.value.quantity = this.cotizacion.quantity.toString();
+    //  this.cotizacionForm.value.price =  this.cotizacion.price;
+
+      if (this.cotizacionForm.value.product == null || this.cotizacionForm.value.product == "") {
+
+      this.cotizacionForm.value.product = this.cotizacion.product._id;
+      
+      }
+
+  
+
+
+         if( (this.cotizacionForm.value.quantity != null || this.cotizacionForm.value.quantity != "") && (this.cotizacionForm.value.price != null || this.cotizacionForm.value.price != "")){
+
+    //   this.cotizacionForm.value.price = this.cotizacion.price.toString();
+
+         
+
+           this.subtota = +this.cotizacionForm.value.quantity;
+      this.pric = +this.cotizacionForm.value.price;
+      this.subtot = this.subtota * this.pric;
+      
+      this.ivas = this.subtot * .16;
+      this.totall = this.subtot + this.ivas;
+      
+      
+      
+      this.subtotal = this.subtot.toString();
+      this.iva = this.ivas.toString();
+      this.total = this.totall.toString();
+      this.cotizacionForm.value.subtotal = this.subtotal;
+      this.cotizacionForm.value.iva = this.iva;
+      this.cotizacionForm.value.total = this.total;
+
+      }
+
+         if( (this.cotizacionForm.value.quantity === null || this.cotizacionForm.value.quantity === "") && (this.cotizacionForm.value.price != null || this.cotizacionForm.value.price != "")){
+
+    //   this.cotizacionForm.value.price = this.cotizacion.price.toString();
+
+         
+
+          this.cotizacionForm.value.quantity = this.cotizacion.quantity.toString();
+
+           this.subtota = +this.cotizacionForm.value.quantity;
+      this.pric = +this.cotizacionForm.value.price;
+      this.subtot = this.subtota * this.pric;
+      
+      this.ivas = this.subtot * .16;
+      this.totall = this.subtot + this.ivas;
+      
+      
+      
+      this.subtotal = this.subtot.toString();
+      this.iva = this.ivas.toString();
+      this.total = this.totall.toString();
+      this.cotizacionForm.value.subtotal = this.subtotal;
+      this.cotizacionForm.value.iva = this.iva;
+      this.cotizacionForm.value.total = this.total;
+
+      }
+
+           if( (this.cotizacionForm.value.quantity != null || this.cotizacionForm.value.quantity != "") && (this.cotizacionForm.value.price === null || this.cotizacionForm.value.price === "")){
+
+    //   this.cotizacionForm.value.price = this.cotizacion.price.toString();
+
+        
+
+          this.cotizacionForm.value.price = this.cotizacion.price;
+
+           this.subtota = +this.cotizacionForm.value.quantity;
+      this.pric = +this.cotizacionForm.value.price;
+      this.subtot = this.subtota * this.pric;
+      
+      this.ivas = this.subtot * .16;
+      this.totall = this.subtot + this.ivas;
+      
+      
+      
+      this.subtotal = this.subtot.toString();
+      this.iva = this.ivas.toString();
+      this.total = this.totall.toString();
+      this.cotizacionForm.value.subtotal = this.subtotal;
+      this.cotizacionForm.value.iva = this.iva;
+      this.cotizacionForm.value.total = this.total;
+
+      }
+
+
+  
+    
+
+       
+
+      
 
       console.log("Datos", this.cotizacionForm.value);
   

@@ -29,6 +29,8 @@ import { ProductosComponent } from './productos/productos.component';
 import { AgregarComponent } from './productos/agregar/agregar.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ClieComponent } from './clientes/clie/clie.component';
+import { PdfComponent } from './generar/pdf/pdf.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { ClieComponent } from './clientes/clie/clie.component';
     ProductosComponent,
     AgregarComponent,
     ClientesComponent,
-    ClieComponent
+    ClieComponent,
+    PdfComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +67,7 @@ import { ClieComponent } from './clientes/clie/clie.component';
     FormsModule,
     MatSelectModule,
     ReactiveFormsModule,
+    PdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

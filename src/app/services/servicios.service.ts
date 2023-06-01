@@ -15,6 +15,9 @@ import swal from 'sweetalert2';
 })
 export class ServiciosService {
 
+  cotiza: string;
+  cotizac: number;
+
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient, private authService: LoginService) { }
@@ -139,6 +142,21 @@ export class ServiciosService {
     httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
     return this.http.get<AppResponse<CotizacionModel[]>>(
       `https://sistema-interno-back-pepemalpik.vercel.app/quotes`, { headers: httpHeaders },
+    );
+
+  }
+
+    getCotizacionesPdf(): Observable<AppResponse<CotizacionModel[]>> {
+
+    let httpHeaders = new HttpHeaders();
+    let token = this.authService.token;
+    this.cotiza = sessionStorage.getItem('cotizacion');
+    this.cotizac = +this.cotiza;
+    console.log("id",this.cotizac);
+  
+    httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+    return this.http.get<AppResponse<CotizacionModel[]>>(
+      `https://sistema-interno-back-pepemalpik.vercel.app/quotes/pdf/${this.cotizac}`, { headers: httpHeaders },
     );
 
   }

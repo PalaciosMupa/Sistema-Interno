@@ -1,5 +1,7 @@
 <app-producto *ngIf="CotizacionSeleccionada" [cotizacion]="CotizacionSeleccionada"></app-producto>
 
+<app-pdf *ngIf="CotizacionSeleccionad" [cotizacion]="CotizacionSeleccionad"></app-pdf>
+
 <mat-sidenav-container>
 <mat-sidenav-content>
 <main class="col-md-9 col-lg-12 px-md-4">
@@ -54,10 +56,10 @@
             <td>{{ cotiza.product.name }}</td>
             <td>{{ cotiza.product.presentation }}</td>
             <td>{{ cotiza.quantity }}</td>
-            <td>$ {{ cotiza.price }}</td>
-            <td>$ {{ cotiza.subtotal }}</td>
-            <td>$ {{ cotiza.iva }}</td>
-            <td>$ {{ cotiza.total }}</td>
+            <td>$ {{ cotiza.price | number: '1.0-2'}}</td>
+            <td>$ {{ cotiza.subtotal | number: '1.0-2'}}</td>
+            <td>$ {{ cotiza.iva | number: '1.0-2'}}</td>
+            <td>$ {{ cotiza.total | number: '1.0-2'}}</td>
            
              
              <td>
@@ -72,15 +74,20 @@
            <tr>  
             <td colspan= "3" ></td>  
             <td colspan= "1" ><b>Totales:</b> </td>  
-            <td colspan= "1" ><b></b> $ {{suma1}}</td> 
-            <td colspan= "1" ><b></b>$ {{suma2}} </td> 
-            <td colspan= "1" ><b></b>$ {{suma3}} </td>  
-          </tr>  
+            <td colspan= "1" ><b></b> $ {{suma1 | number: '1.0-2'}}</td> 
+            <td colspan= "1" ><b></b>$ {{suma2 | number: '1.0-2'}} </td> 
+            <td colspan= "1" ><b></b>$ {{suma3 | number: '1.0-2'}} </td>  
+          </tr> 
+
+       
         </tbody>
       </table>
 
 
  <button (click)='eliminarCocki()' type="button" name="eliminar"   class="btn btn-success btn-sm">Generar Cotización</button> 
+ &nbsp;
+ <button (click)="abrirPdf(cotizacion)" type="button" name="pdf"   class="btn btn-secondary btn-sm">Ver Pdf</button> 
+ 
   </main>
 
 </mat-sidenav-content>

@@ -3,6 +3,7 @@ import { CotizacionModel } from '../../models/cotizacion.model';
 import { EmpresaModel } from '../../models/empresa.model';
 import { ClienteModel } from '../../models/cliente.model';
 import { ModalService } from './producto/modal.service';
+import { PdfService } from './pdf/pdf.service';
 import { ServiciosService } from '../services/servicios.service';
 import { AppResponse } from 'src/models/api-response.model';
 import { filter } from 'rxjs/operators';
@@ -25,14 +26,17 @@ export class GenerarComponent {
   cookiNum: number; 
   public cotizacion: CotizacionModel = new CotizacionModel();
   CotizacionSeleccionada: CotizacionModel;
+  CotizacionSeleccionad: CotizacionModel;
    suma1:number=0;
    suma2:number=0;
    suma3:number=0;
 
-  constructor( private modalService: ModalService, private serviciosService: ServiciosService) { }
+  constructor( private modalService: ModalService, private serviciosService: ServiciosService, private pdfService: PdfService,) { }
 
 
   ngOnInit(): void {
+
+
 
        this.serviciosService.getClientes().subscribe(
       (resp: AppResponse<ClienteModel[]>) => {
@@ -72,7 +76,7 @@ export class GenerarComponent {
 
    this.cooki = sessionStorage.getItem('cotizacion');
    this.cookiNum = +this.cooki;
-   console.log("no",this.cooki);
+   console.log("noQuote",this.cooki);
  // this.serviciosService.getCotizaciones().subscribe((cotizacioness:AppResponse<CotizacionModel[]>) => {
  //    this.cotizacione = cotizacioness.filter(
  //    (cotizacioness:AppResponse<CotizacionModel[]>) => cotizacioness.data.noQuote == this.cooki)
@@ -103,11 +107,6 @@ export class GenerarComponent {
 //console.log("Tamaño", this.cotizacione.length);
 
     
-
-
-    
-
-  
 
     
   }
@@ -144,7 +143,13 @@ export class GenerarComponent {
     this.modalService.abrirModal();
 
     
+  }
 
+  abrirPdf(cotizaciones: CotizacionModel) {
+   
+this.CotizacionSeleccionad = cotizaciones;
+    this.pdfService.abrirPDF();
+    
   }
 
   eliminarCocki(){
