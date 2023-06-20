@@ -60,6 +60,23 @@ export class ServiciosService {
 
   }
 
+   enviarPdf () {
+
+    let httpHeaders = new HttpHeaders();
+    let token = this.authService.token;
+    if (token != null) {
+      httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+    }
+   this.cotiza = sessionStorage.getItem('cotizacion');
+   this.cotizac = +this.cotiza;
+   console.log("Paso Dos", this.cotizac);
+
+    const urlEndpoint = 'https://sistema-interno-back-pepemalpik.vercel.app/quotes/sendPdf?noQuote='; 
+   
+    return this.http.post<any>(`${urlEndpoint}${this.cotizac}`, { headers: httpHeaders });
+
+  }
+
     guardarCotizacion(body: any) {
 
     let httpHeaders = new HttpHeaders();
@@ -160,6 +177,12 @@ export class ServiciosService {
     );
 
   }
+
+  
+
+
+
+ 
 
       updateProducto(body: any, producto: ProductoModel): Observable<any> {
 

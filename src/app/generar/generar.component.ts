@@ -152,14 +152,35 @@ this.CotizacionSeleccionad = cotizaciones;
     
   }
 
-  eliminarCocki(){
+  sendPdf(){
+
+
+  this.serviciosService.enviarPdf().subscribe(
+            resp => {
+               Swal.fire(
+                'Cotización!',
+                'Enviada con éxito.',
+                'success'
+              )
+         
+            });
+          
+
+  }
+
+  nuevaCotizacion(){
+
+
+
 sessionStorage.removeItem('cotizacion');
 sessionStorage.removeItem('compania');
 sessionStorage.removeItem('cliente');
 sessionStorage.removeItem('solicitud');
  window.location.reload();
-;
 
   }
+
+
+
 
 }

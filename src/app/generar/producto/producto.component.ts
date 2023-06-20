@@ -33,6 +33,8 @@ export class ProductoComponent {
   produc:  ProductoModel[];
   productos: ProductoModel[];
   cotizaciones: CotizacionModel[];
+  comentario:boolean=false;
+
  
   prodName: any[] = [];
   empresas: any[] = [];
@@ -48,6 +50,10 @@ export class ProductoComponent {
   solici: string;
   cliente1: string;
   compania1: string;
+  productoss: string;
+  comentarios: string;
+  cantidad: string;
+  precio: string;
 
 
 
@@ -60,6 +66,9 @@ export class ProductoComponent {
   iva: string;
   totall: number;
   total: string;
+  selectedSizeValues: string;
+
+    test: string ='';
 
    cotizacionForm = this.fb.group({
   
@@ -75,14 +84,21 @@ export class ProductoComponent {
     product: ['', [Validators.required]],
     price: ['', [Validators.required]],
     quantity: ['', [Validators.required]],
+    comment: ['']
+    
+    
   });
+
+
 
   constructor(public modalService: ModalService, private fb: FormBuilder, private serviciosService: ServiciosService) { }
 
   ngOnInit(): void {
 
 
-    console.log("Datos desde", this.cotizacion);
+    
+    
+      
 
 
      this.serviciosService.getClientes().subscribe(
@@ -139,15 +155,43 @@ export class ProductoComponent {
       this.cliente1 = sessionStorage.getItem('cliente');
       this.compania1 = sessionStorage.getItem('compania');
 
-      
-     
-      if (this.solici != "" || this.solici != null) {
+ 
+    
+        if(Object.keys(this.cotizacion).length > 0){
+
+            this.cantidad = this.cotizacion.quantity.toString();
+              this.precio = this.cotizacion.price;
+               this.productoss = this.cotizacion.product.name;
+               this.comentarios = this.cotizacion.comment;
+
+                  if (this.solici != "" || this.solici != null) {
+
+                    this.comentario = true;
 
          this.cotizacionForm.setValue({noQuote: this.cotizacionForm.value.noQuote, noRequest: this.solici,  total: this.cotizacionForm.value.total,
           subtotal: this.cotizacionForm.value.subtotal, iva: this.cotizacionForm.value.iva, company: this.compania1, customer: this.cliente1, 
-          date: this.cotizacionForm.value.date, time: this.cotizacionForm.value.time, product: this.cotizacionForm.value.product, price: this.cotizacionForm.value.price, quantity: this.cotizacionForm.value.quantity});
+          date: this.cotizacionForm.value.date, time: this.cotizacionForm.value.time, product: this.productoss, price: this.precio, quantity: this.cantidad, comment: this.comentarios});
+        
+
+}
+
+        }else{
+          if (this.solici != "" || this.solici != null) {
+
+         this.cotizacionForm.setValue({noQuote: this.cotizacionForm.value.noQuote, noRequest: this.solici,  total: this.cotizacionForm.value.total,
+          subtotal: this.cotizacionForm.value.subtotal, iva: this.cotizacionForm.value.iva, company: this.compania1, customer: this.cliente1, 
+          date: this.cotizacionForm.value.date, time: this.cotizacionForm.value.time, product: this.cotizacionForm.value.product, price: this.cotizacionForm.value.price, quantity: this.cotizacionForm.value.quantity, comment: this.cotizacionForm.value.comment});
         
       }
+        }
+       
+      
+
+      
+
+      
+     
+      
 
 
       
@@ -171,6 +215,21 @@ export class ProductoComponent {
     
      
    }
+
+   
+
+   GetStats(event: Event) {
+    console.log(event);
+
+  
+ 
+    this.comentario = true;
+    if(this.comentario){
+     
+      console.log("Estoy en true");
+    }
+ 
+  }  
 
      guardarCotizacion() {
 
@@ -294,6 +353,9 @@ export class ProductoComponent {
 
       this.cotizacionForm.value.product = this.cotizacion.product._id;
       
+      }else{
+
+        this.cotizacionForm.value.product = this.cotizacion.product._id;
       }
 
   

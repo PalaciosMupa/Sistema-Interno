@@ -11,12 +11,14 @@ import { ClientesComponent } from './clientes/clientes.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent },
+  {path: 'login', component: LoginComponent },
 {path: 'header', component: HeaderComponent },
 {path: 'generar', component: GenerarComponent },
 {path: 'ver', component: VerComponent },
 {path: 'dash', component: DashboardComponent },
 {path: 'producto', component: ProductosComponent },
 {path: 'clientes', component: ClientesComponent },
+{ path: '', redirectTo: '/login', pathMatch: 'full' },
 //{ path: '', redirectTo: 'header', pathMatch: 'full' }
 
   ];

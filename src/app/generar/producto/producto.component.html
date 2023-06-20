@@ -71,12 +71,17 @@
           </mat-form-field>
 
              
+         <mat-form-field *ngIf="cotizacion._id" class="example-full-width">
+          <mat-label>Producto</mat-label>
+          <input formControlName="product"  readonly matInput placeholder="" value="">
+          </mat-form-field>
+
 
                
             
 
 
-          <div class="row">
+          <div *ngIf="!cotizacion._id" class="row">
 
             <div class="col-sm">
            
@@ -101,13 +106,16 @@
 
              <mat-form-field class="example-full-width">
               <mat-label>Producto</mat-label>
-              <mat-select name="presenta"  formControlName="product"  
+              <mat-select  formControlName="product"  name="cotizacion" 
               >
               <mat-option *ngFor="let presenta of productos" [value]="presenta._id">
               {{presenta.name}}
               </mat-option>
               </mat-select>
             </mat-form-field>
+
+
+           
 
              
 
@@ -136,22 +144,66 @@
              
               </div>
 
-                 <div class="row">
+                
 
-            <div class="col-xs-12 col-sm-6 col-md-8">
+            <div class="row row-cols-1 row-cols-md-2">
            
-      
+      <div  class="col mb-4">
         <mat-form-field class="example-full-width">
           <mat-label>Cantidad</mat-label>
           <input formControlName="quantity" matInput placeholder="" value="">
           </mat-form-field>
 
-          
+          </div>
                
-                </div>
+              
 
              
-              </div>
+
+           <div  class="col mb-4">
+      
+     <input type="checkbox"  (change)="GetStats($event)" > &nbsp;&nbsp;Observaciones
+     
+               </div>
+               
+             
+               </div>
+
+
+
+               <!---  -->
+
+
+            <div  *ngIf="comentario"  class="row row-cols-1 row-cols-md-2">
+           
+      <div  class="col mb-4">
+        
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Observaciones</mat-label>
+          <textarea formControlName="comment" matInput placeholder="Ejm. Producto hecho de madera...."></textarea>
+          </mat-form-field>
+
+          </div>
+               
+              
+
+             
+
+           <div  class="col mb-4">
+      
+          
+               
+             
+               </div>
+
+
+         
+             </div>
+             
+
+
+             
 
           
 

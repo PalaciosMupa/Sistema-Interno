@@ -12,15 +12,18 @@ export class AppComponent {
   title = 'Sistema';
   autenticado:boolean = false;
   abc:boolean = false;
+  token: string = "";
   
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, public authService: LoginService) { }
 
   ngOnInit(): void {
 
-  console.log("Hola",window.sessionStorage.getItem('token'));
+ this.token = sessionStorage.getItem('token'); 
+ console.log("Token 2", this.token);
+  
 
-  if (window.sessionStorage.getItem('token').length > 0 || window.sessionStorage.getItem('token') != null ) {
+  if (this.token != "" || this.token != null ) {
       this.autenticado = true;
     }
   }

@@ -14,6 +14,7 @@ export class CotizacionModel{
   total: number;
   subtotal: number;
   iva: number;
+  comment: string;
  // serie:string;
  // expiracion:string;
 

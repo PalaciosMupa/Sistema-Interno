@@ -41,6 +41,7 @@
             <th>Artículo</th>
             <th>Unidad</th>
             <th>Cantidad</th>
+            <th>Observaciones</th>
             <th>Precio Unitario</th>
             <th>Subtotal</th>
             <th>IVA</th>
@@ -56,6 +57,7 @@
             <td>{{ cotiza.product.name }}</td>
             <td>{{ cotiza.product.presentation }}</td>
             <td>{{ cotiza.quantity }}</td>
+            <td>{{ cotiza.comment }}</td>
             <td>$ {{ cotiza.price | number: '1.0-2'}}</td>
             <td>$ {{ cotiza.subtotal | number: '1.0-2'}}</td>
             <td>$ {{ cotiza.iva | number: '1.0-2'}}</td>
@@ -72,7 +74,7 @@
             </td>  
           </tr>
            <tr>  
-            <td colspan= "3" ></td>  
+            <td colspan= "4" ></td>  
             <td colspan= "1" ><b>Totales:</b> </td>  
             <td colspan= "1" ><b></b> $ {{suma1 | number: '1.0-2'}}</td> 
             <td colspan= "1" ><b></b>$ {{suma2 | number: '1.0-2'}} </td> 
@@ -83,8 +85,10 @@
         </tbody>
       </table>
 
+<button (click)='nuevaCotizacion()' type="button" name="eliminar"   class="btn btn-primary btn-sm">Nueva Cotización</button> 
+ &nbsp;
 
- <button (click)='eliminarCocki()' type="button" name="eliminar"   class="btn btn-success btn-sm">Generar Cotización</button> 
+ <button (click)='sendPdf()' type="button" name="eliminar"   class="btn btn-success btn-sm">Enviar Pdf</button> 
  &nbsp;
  <button (click)="abrirPdf(cotizacion)" type="button" name="pdf"   class="btn btn-secondary btn-sm">Ver Pdf</button> 
  

@@ -37,8 +37,7 @@ export class LoginComponent {
   }
 
   loginReactivo() {
-   console.log("Datos",this.loginForm.value);
-   console.log("Datos 1",this.loginForm.value.email);
+   
 
       if (this.loginForm.value.email.trim() == '' || this.loginForm.value.email.trim() == null) {
       this.snack.open('El nombre de usuario es requerido !!', 'Aceptar', {
@@ -58,7 +57,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.authService.loginReactivo(this.loginForm.value)
         .subscribe((res) => {
-
+      sessionStorage.setItem('token', res.data);
       this.authService.guardarUsuario(res.data);
       this.authService.guardarToken(res.data);
           this.router.navigate(['/dash']);
